@@ -21,14 +21,15 @@ public class InterfaceApplicationExercise01 {
 
     /**
      * @param args the command line arguments
+     * @throws java.io.IOException
      */
     public static void main(String[] args) throws IOException {
         // TODO code application logic here
-        ArrayList<Cadastro> db = new ArrayList<Cadastro>();
+        ArrayList<Cadastro> db= new ArrayList<Cadastro>();
 
         //ler arquivo
         ler_arquivo_gerar_bd("dados_novos.csv", db);
-//        db.sort(null);
+        db.sort(null);
         escrever_arquivo("dados_ordenados.txt", db);
 
         ListarRegistros listarRegistros = new ListarRegistros(db);
@@ -42,7 +43,7 @@ public class InterfaceApplicationExercise01 {
 
         String linha = buffRead.readLine();
 
-        linha = buffRead.readLine();
+//        linha = buffRead.readLine();
         while (linha != null) {
             String vet[] = linha.split(",");
             bd.add(new Cadastro(vet[0], vet[1], vet[2], vet[3], vet[4], vet[5], vet[6]));

@@ -4,7 +4,14 @@
  */
 package interfaceapplicationexercise01;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -21,6 +28,7 @@ public class ListarRegistros extends javax.swing.JFrame {
     public ListarRegistros(ArrayList<Cadastro> db) {
         initComponents();
         this.db = db;
+        changeFormItems();
     }
 
     /**
@@ -32,7 +40,8 @@ public class ListarRegistros extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        readFile = new javax.swing.JButton();
+        jDialog1 = new javax.swing.JDialog();
+        clearForm = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -49,20 +58,33 @@ public class ListarRegistros extends javax.swing.JFrame {
         inputState = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         next = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
         actualPage = new javax.swing.JLabel();
+        jDelete = new javax.swing.JButton();
+        jTotal = new javax.swing.JLabel();
+        jRegister = new javax.swing.JButton();
+
+        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
+        jDialog1.getContentPane().setLayout(jDialog1Layout);
+        jDialog1Layout.setHorizontalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jDialog1Layout.setVerticalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        readFile.setLabel("Ler arquivo");
-        readFile.addMouseListener(new java.awt.event.MouseAdapter() {
+        clearForm.setText("Limpar");
+        clearForm.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                readFileMouseClicked(evt);
+                clearFormMouseClicked(evt);
             }
         });
-        readFile.addActionListener(new java.awt.event.ActionListener() {
+        clearForm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                readFileActionPerformed(evt);
+                clearFormActionPerformed(evt);
             }
         });
 
@@ -118,6 +140,11 @@ public class ListarRegistros extends javax.swing.JFrame {
 
         inputState.setEditable(false);
         inputState.setText("Estado...");
+        inputState.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputStateActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Anterior");
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -138,9 +165,22 @@ public class ListarRegistros extends javax.swing.JFrame {
             }
         });
 
-        jLabel8.setText("1");
-
         actualPage.setToolTipText("");
+        actualPage.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        jDelete.setText("Excluir");
+        jDelete.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jDeleteMouseClicked(evt);
+            }
+        });
+
+        jRegister.setText("Cadastrar");
+        jRegister.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jRegisterMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -150,102 +190,106 @@ public class ListarRegistros extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton2)
-                        .addGap(115, 115, 115)
-                        .addComponent(actualPage)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(next))
-                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(clearForm)
+                        .addGap(18, 18, 18)
+                        .addComponent(jRegister)
+                        .addGap(139, 139, 139)
+                        .addComponent(jTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(60, 60, 60)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(readFile)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(60, 60, 60)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGap(126, 305, Short.MAX_VALUE)
-                                            .addComponent(jLabel8))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                            .addComponent(jLabel4)
-                                            .addGap(0, 0, Short.MAX_VALUE))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jLabel5)
-                                                .addComponent(jLabel6)
-                                                .addComponent(jLabel7))
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addComponent(inputState)
-                                                .addComponent(inputCity)
-                                                .addComponent(inputNumber, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE))))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(inputName)
-                                            .addComponent(inputDocument, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)))))
+                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(11, 11, 11))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(52, 52, 52)
-                                .addComponent(jLabel3)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(10, 10, 10))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(18, 18, 18))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(22, 22, 22))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(22, 22, 22))
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton2)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(actualPage, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(inputAddress)
-                                    .addComponent(inputDate, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE))))
-                        .addGap(0, 9, Short.MAX_VALUE)))
+                                .addComponent(next)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jDelete))
+                            .addComponent(inputNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(inputState, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(inputName)
+                            .addComponent(inputDocument)
+                            .addComponent(inputDate, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(inputCity, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(inputAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(280, 280, 280)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(readFile)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(clearForm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jRegister))
+                    .addComponent(jTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(inputName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(inputDocument, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(25, 25, 25))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(inputDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel3)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(inputName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel4)
-                        .addComponent(inputAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(inputNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(inputCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(inputDocument, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(inputState, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                    .addComponent(jLabel3)
+                    .addComponent(inputDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(inputAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(11, 11, 11)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(inputNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(11, 11, 11)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(inputCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(11, 11, 11)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(inputState, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton2)
-                    .addComponent(next)
-                    .addComponent(jLabel8)
-                    .addComponent(actualPage, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(actualPage, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(next)
+                        .addComponent(jDelete)))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void readFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_readFileActionPerformed
+    private void clearFormActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearFormActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_readFileActionPerformed
+    }//GEN-LAST:event_clearFormActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
@@ -254,7 +298,7 @@ public class ListarRegistros extends javax.swing.JFrame {
     private void inputNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputNameActionPerformed
         // TODO add your handling code here:
         if (db.size() > 0) {
-            this.inputName.setText(db.get(count).nome);
+            this.inputName.setText(db.get(count).getNome());
         }
     }//GEN-LAST:event_inputNameActionPerformed
 
@@ -266,19 +310,34 @@ public class ListarRegistros extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_inputNumberActionPerformed
 
-    private void readFileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_readFileMouseClicked
+    private void clearFormMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearFormMouseClicked
         // TODO add your handling code here:
-        this.count = 0;
-        changeFormItems();
-//        this.inputName.setText(db.get(count).nome);
-//        this.inputDocument.setText(db.get(count).cpf);
-//        this.inputDate.setText(db.get(count).data_nasc);
-//        this.inputAddress.setText(db.get(count).endereco);
-//        this.inputNumber.setText(db.get(count).numero);
-//        this.inputCity.setText(db.get(count).cidade);
-//        this.inputState.setText(db.get(count).estado);
-//        this.actualPage.setText(String.valueOf(count + 1));
-    }//GEN-LAST:event_readFileMouseClicked
+//        this.count = 0;
+//        changeFormItems();
+
+        this.inputName.setText("");
+        this.inputDocument.setText("");
+        this.inputDate.setText("");
+        this.inputAddress.setText("");
+        this.inputNumber.setText("");
+        this.inputCity.setText("");
+        this.inputState.setText("");
+        this.actualPage.setText("");
+        this.jTotal.setText(String.valueOf("Total: " + db.size()));
+
+        enableFormToEdit();
+    }//GEN-LAST:event_clearFormMouseClicked
+
+    private void enableFormToEdit() {
+        this.inputName.setEditable(rootPaneCheckingEnabled);
+        this.inputName.setEditable(rootPaneCheckingEnabled);
+        this.inputDocument.setEditable(rootPaneCheckingEnabled);
+        this.inputDate.setEditable(rootPaneCheckingEnabled);
+        this.inputAddress.setEditable(rootPaneCheckingEnabled);
+        this.inputNumber.setEditable(rootPaneCheckingEnabled);
+        this.inputCity.setEditable(rootPaneCheckingEnabled);
+        this.inputState.setEditable(rootPaneCheckingEnabled);
+    }
 
     private void nextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nextMouseClicked
         // TODO add your handling code here:
@@ -287,7 +346,7 @@ public class ListarRegistros extends javax.swing.JFrame {
         } else {
             this.count = 0;
         }
-        
+
         changeFormItems();
     }//GEN-LAST:event_nextMouseClicked
 
@@ -302,16 +361,54 @@ public class ListarRegistros extends javax.swing.JFrame {
         changeFormItems();
     }//GEN-LAST:event_jButton2MouseClicked
 
+    private void inputStateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputStateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputStateActionPerformed
+
+    private void jDeleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jDeleteMouseClicked
+        // TODO add your handling code here:
+        int resposta = JOptionPane.showConfirmDialog(null, "Confirma a exclusão de \n" + this.db.get(count).getNome(), "Exclusão de Registro", JOptionPane.YES_NO_OPTION);
+
+        if (resposta == 0) {
+            this.db.remove(count);
+            changeFormItems();
+        }
+        try {
+            escrever_arquivo();
+        } catch (IOException e) {
+        }
+    }//GEN-LAST:event_jDeleteMouseClicked
+
+    private void jRegisterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRegisterMouseClicked
+        // TODO add your handling code here:
+        Cadastro cd = new Cadastro(this.inputName.getText(),
+                this.inputDocument.getText(),
+                this.inputDate.getText(),
+                this.inputAddress.getText(),
+                this.inputNumber.getText(),
+                this.inputCity.getText(),
+                this.inputState.getText());
+        this.db.add(cd);
+
+        try {
+            this.escrever_arquivo();
+            changeFormItems();
+        } catch (IOException ex) {
+            Logger.getLogger(ListarRegistros.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jRegisterMouseClicked
+
     private void changeFormItems() {
         // TODO add your handling code here:
-        this.inputName.setText(db.get(count).nome);
-        this.inputDocument.setText(db.get(count).cpf);
-        this.inputDate.setText(db.get(count).data_nasc);
-        this.inputAddress.setText(db.get(count).endereco);
-        this.inputNumber.setText(db.get(count).numero);
-        this.inputCity.setText(db.get(count).cidade);
-        this.inputState.setText(db.get(count).estado);
+        this.inputName.setText(db.get(count).getNome());
+        this.inputDocument.setText(db.get(count).getCpf());
+        this.inputDate.setText(db.get(count).getData_nasc());
+        this.inputAddress.setText(db.get(count).getEndereco());
+        this.inputNumber.setText(db.get(count).getNumero());
+        this.inputCity.setText(db.get(count).getCidade());
+        this.inputState.setText(db.get(count).getEstado());
         this.actualPage.setText(String.valueOf(count + 1));
+        this.jTotal.setText(String.valueOf("Total: " + db.size()));
     }
 
     /**
@@ -354,6 +451,7 @@ public class ListarRegistros extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel actualPage;
+    private javax.swing.JButton clearForm;
     private javax.swing.JTextField inputAddress;
     private javax.swing.JTextField inputCity;
     private javax.swing.JTextField inputDate;
@@ -362,6 +460,8 @@ public class ListarRegistros extends javax.swing.JFrame {
     private javax.swing.JTextField inputNumber;
     private javax.swing.JTextField inputState;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jDelete;
+    private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -369,8 +469,18 @@ public class ListarRegistros extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
+    private javax.swing.JButton jRegister;
+    private javax.swing.JLabel jTotal;
     private javax.swing.JButton next;
-    private javax.swing.JButton readFile;
     // End of variables declaration//GEN-END:variables
+public void escrever_arquivo() throws IOException {
+
+        BufferedWriter buffWrite = new BufferedWriter(new FileWriter("dados_novos.csv", StandardCharsets.ISO_8859_1, false));
+
+        for (int i = 0; i < db.size(); i++) {
+            buffWrite.append(db.get(i).toString() + "\n");
+        }
+
+        buffWrite.close();
+    }
 }
