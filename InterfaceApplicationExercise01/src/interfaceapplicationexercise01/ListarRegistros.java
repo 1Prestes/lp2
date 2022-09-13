@@ -24,6 +24,7 @@ public class ListarRegistros extends javax.swing.JFrame {
      */
     public static ArrayList<Cadastro> db = new ArrayList<Cadastro>();
     public int count = 0;
+    public boolean isEditing = false;
 
     public ListarRegistros(ArrayList<Cadastro> db) {
         initComponents();
@@ -62,6 +63,7 @@ public class ListarRegistros extends javax.swing.JFrame {
         jDelete = new javax.swing.JButton();
         jTotal = new javax.swing.JLabel();
         jRegister = new javax.swing.JButton();
+        editButton = new javax.swing.JButton();
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
         jDialog1.getContentPane().setLayout(jDialog1Layout);
@@ -113,6 +115,11 @@ public class ListarRegistros extends javax.swing.JFrame {
 
         inputDocument.setEditable(false);
         inputDocument.setText("Documento...");
+        inputDocument.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputDocumentActionPerformed(evt);
+            }
+        });
 
         inputDate.setEditable(false);
         inputDate.setText("Data de nascimento...");
@@ -181,6 +188,18 @@ public class ListarRegistros extends javax.swing.JFrame {
                 jRegisterMouseClicked(evt);
             }
         });
+        jRegister.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRegisterActionPerformed(evt);
+            }
+        });
+
+        editButton.setText("Editar");
+        editButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                editButtonMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -193,7 +212,9 @@ public class ListarRegistros extends javax.swing.JFrame {
                         .addComponent(clearForm)
                         .addGap(18, 18, 18)
                         .addComponent(jRegister)
-                        .addGap(139, 139, 139)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(editButton)
+                        .addGap(56, 56, 56)
                         .addComponent(jTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -234,8 +255,7 @@ public class ListarRegistros extends javax.swing.JFrame {
                             .addComponent(inputDate, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(inputCity, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(inputAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(280, 280, 280)))
-                .addContainerGap())
+                        .addGap(280, 280, 280))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -244,7 +264,8 @@ public class ListarRegistros extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(clearForm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jRegister))
+                        .addComponent(jRegister)
+                        .addComponent(editButton))
                     .addComponent(jTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -328,17 +349,6 @@ public class ListarRegistros extends javax.swing.JFrame {
         enableFormToEdit();
     }//GEN-LAST:event_clearFormMouseClicked
 
-    private void enableFormToEdit() {
-        this.inputName.setEditable(rootPaneCheckingEnabled);
-        this.inputName.setEditable(rootPaneCheckingEnabled);
-        this.inputDocument.setEditable(rootPaneCheckingEnabled);
-        this.inputDate.setEditable(rootPaneCheckingEnabled);
-        this.inputAddress.setEditable(rootPaneCheckingEnabled);
-        this.inputNumber.setEditable(rootPaneCheckingEnabled);
-        this.inputCity.setEditable(rootPaneCheckingEnabled);
-        this.inputState.setEditable(rootPaneCheckingEnabled);
-    }
-
     private void nextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nextMouseClicked
         // TODO add your handling code here:
         if ((count + 1) < db.size()) {
@@ -398,6 +408,41 @@ public class ListarRegistros extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jRegisterMouseClicked
 
+    private void jRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRegisterActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRegisterActionPerformed
+
+    private void editButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editButtonMouseClicked
+        // TODO add your handling code here:
+        this.isEditing = !this.isEditing;
+        this.editButton.setText(this.isEditing ? "Salvar" : "Editar");
+        this.changeFormToEdit(this.isEditing);
+
+        if (!this.isEditing) {
+            this.updateRegister();
+        }
+    }//GEN-LAST:event_editButtonMouseClicked
+
+    private void inputDocumentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputDocumentActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputDocumentActionPerformed
+
+    private void updateRegister() {
+        this.db.get(count).setCidade(this.inputCity.getText());
+        this.db.get(count).setCpf(this.inputDocument.getText());
+        this.db.get(count).setData_nasc(this.inputDate.getText());
+        this.db.get(count).setEndereco(this.inputAddress.getText());
+        this.db.get(count).setEstado(this.inputState.getText());
+        this.db.get(count).setNome(this.inputName.getText());
+        this.db.get(count).setNumero(this.inputNumber.getText());
+
+        try {
+            this.escrever_arquivo();
+        } catch (IOException ex) {
+            Logger.getLogger(ListarRegistros.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     private void changeFormItems() {
         // TODO add your handling code here:
         this.inputName.setText(db.get(count).getNome());
@@ -409,6 +454,28 @@ public class ListarRegistros extends javax.swing.JFrame {
         this.inputState.setText(db.get(count).getEstado());
         this.actualPage.setText(String.valueOf(count + 1));
         this.jTotal.setText(String.valueOf("Total: " + db.size()));
+    }
+
+    private void changeFormToEdit(boolean enabled) {
+        this.inputName.setEditable(enabled);
+        this.inputName.setEditable(enabled);
+        this.inputDocument.setEditable(enabled);
+        this.inputDate.setEditable(enabled);
+        this.inputAddress.setEditable(enabled);
+        this.inputNumber.setEditable(enabled);
+        this.inputCity.setEditable(enabled);
+        this.inputState.setEditable(enabled);
+    }
+
+    private void enableFormToEdit() {
+        this.inputName.setEditable(rootPaneCheckingEnabled);
+        this.inputName.setEditable(rootPaneCheckingEnabled);
+        this.inputDocument.setEditable(rootPaneCheckingEnabled);
+        this.inputDate.setEditable(rootPaneCheckingEnabled);
+        this.inputAddress.setEditable(rootPaneCheckingEnabled);
+        this.inputNumber.setEditable(rootPaneCheckingEnabled);
+        this.inputCity.setEditable(rootPaneCheckingEnabled);
+        this.inputState.setEditable(rootPaneCheckingEnabled);
     }
 
     /**
@@ -425,16 +492,24 @@ public class ListarRegistros extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ListarRegistros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListarRegistros.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ListarRegistros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListarRegistros.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ListarRegistros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListarRegistros.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ListarRegistros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListarRegistros.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -452,6 +527,7 @@ public class ListarRegistros extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel actualPage;
     private javax.swing.JButton clearForm;
+    private javax.swing.JButton editButton;
     private javax.swing.JTextField inputAddress;
     private javax.swing.JTextField inputCity;
     private javax.swing.JTextField inputDate;

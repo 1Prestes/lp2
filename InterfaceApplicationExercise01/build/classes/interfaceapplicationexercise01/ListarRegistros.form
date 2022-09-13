@@ -47,7 +47,9 @@
                       <Component id="clearForm" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jRegister" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="139" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="editButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
                       <Component id="jTotal" min="-2" pref="66" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
@@ -101,7 +103,6 @@
                       <EmptySpace min="-2" pref="280" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -113,6 +114,7 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="clearForm" alignment="3" max="32767" attributes="0"/>
                       <Component id="jRegister" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="editButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="jTotal" max="32767" attributes="0"/>
               </Group>
@@ -225,6 +227,9 @@
         <Property name="editable" type="boolean" value="false"/>
         <Property name="text" type="java.lang.String" value="Documento..."/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="inputDocumentActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="inputDate">
       <Properties>
@@ -306,6 +311,15 @@
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jRegisterMouseClicked"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRegisterActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="editButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Editar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="editButtonMouseClicked"/>
       </Events>
     </Component>
   </SubComponents>
