@@ -27,50 +27,14 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Component id="labelAltura" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                                      <Component id="inputAltura" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" attributes="0">
-                                      <Component id="labelIdade" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                                      <Component id="inputIdade" min="-2" pref="34" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" attributes="0">
-                                      <Component id="labelEstado" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                                      <Component id="inputEstado" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="labelCidade" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                                      <Component id="inputCidade" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" attributes="0">
-                                      <Component id="labelEndereco" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                                      <Component id="inputEndereco" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                          </Group>
-                      </Group>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="image" min="-2" pref="100" max="-2" attributes="0"/>
+                      <Component id="labelImage" min="-2" pref="100" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="labelNome" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="inputNome" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="108" max="32767" attributes="0"/>
+                              <Component id="inputNome" max="32767" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="editar" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="novo" min="-2" max="-2" attributes="0"/>
@@ -85,14 +49,58 @@
                               <Component id="jLabel11" min="-2" pref="25" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jLabel12" min="-2" pref="25" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace pref="51" max="32767" attributes="0"/>
                               <Component id="excluir" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="voltar" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="voltar" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="labelEndereco" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                                              <Component id="inputEndereco" min="-2" pref="167" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                                              <Group type="102" attributes="0">
+                                                  <Component id="labelAltura" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                                                  <Component id="inputAltura" max="32767" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="labelIdade" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                                                  <Component id="inputIdade" min="-2" pref="34" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="labelEstado" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                                                  <Component id="inputEstado" max="32767" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="labelCidade" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                                                  <Component id="inputCidade" min="-2" pref="125" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="avancar" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -130,7 +138,7 @@
                               <Component id="editar" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="novo" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="image" min="-2" pref="100" max="-2" attributes="0"/>
+                          <Component id="labelImage" min="-2" pref="100" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -141,7 +149,7 @@
                   <Component id="labelIdade" min="-2" max="-2" attributes="0"/>
                   <Component id="inputIdade" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Component id="labelAltura" min="-2" max="-2" attributes="0"/>
                   <Component id="inputAltura" min="-2" max="-2" attributes="0"/>
@@ -166,19 +174,18 @@
                   <Component id="avancar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="voltar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="11" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="image">
+    <Component class="javax.swing.JLabel" name="labelImage">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="7b" green="7b" red="7b" type="rgb"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Image"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
             <BevelBorder>
@@ -249,6 +256,9 @@
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="null"/>
         </Property>
+        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[20, 14]"/>
+        </Property>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="inputNomeActionPerformed"/>
@@ -257,6 +267,9 @@
     <Component class="javax.swing.JTextField" name="inputIdade">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="null"/>
+        </Property>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="inputIdadeActionPerformed"/>
@@ -265,6 +278,9 @@
     <Component class="javax.swing.JTextField" name="inputAltura">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="null"/>
+        </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel8">
@@ -275,16 +291,25 @@
     <Component class="javax.swing.JTextField" name="inputEstado">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="null"/>
+        </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="inputCidade">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="null"/>
+        </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="inputEndereco">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="null"/>
+        </Property>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="inputEnderecoActionPerformed"/>

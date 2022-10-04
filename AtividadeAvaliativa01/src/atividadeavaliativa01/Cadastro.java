@@ -23,9 +23,10 @@ public class Cadastro implements Serializable {
     private ImageIcon foto;
     private Estado estado;
 
-    public Cadastro(String nome, String endereco, String cidade, Date dataNasc, float altura, int numero, ImageIcon foto) {
+    public Cadastro(String nome, String endereco, Estado estado, String cidade, Date dataNasc, float altura, int numero, ImageIcon foto) {
         this.nome = nome;
         this.endereco = endereco;
+        this.estado = estado;
         this.cidade = cidade;
         this.dataNasc = dataNasc;
         this.altura = altura;

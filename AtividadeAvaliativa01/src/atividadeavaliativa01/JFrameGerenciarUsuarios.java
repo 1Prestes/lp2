@@ -4,7 +4,9 @@
  */
 package atividadeavaliativa01;
 
+import java.awt.Image;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -16,6 +18,9 @@ public class JFrameGerenciarUsuarios extends javax.swing.JFrame {
      * Creates new form JFrameGerenciarUsuarios
      */
     public static ArrayList<Cadastro> cadastro = new ArrayList<Cadastro>();
+    private int index = 0;
+//    private boolean novoUsuario = false;
+    private JFrameNovoUsuario novoUsuario;
 
     public JFrameGerenciarUsuarios(ArrayList<Cadastro> cadastro) {
         this.cadastro = cadastro;
@@ -32,7 +37,7 @@ public class JFrameGerenciarUsuarios extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        image = new javax.swing.JLabel();
+        labelImage = new javax.swing.JLabel();
         labelNome = new javax.swing.JLabel();
         labelIdade = new javax.swing.JLabel();
         labelAltura = new javax.swing.JLabel();
@@ -59,11 +64,10 @@ public class JFrameGerenciarUsuarios extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        image.setBackground(new java.awt.Color(123, 123, 123));
-        image.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        image.setText("Image");
-        image.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.lightGray, java.awt.Color.white));
-        image.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        labelImage.setBackground(new java.awt.Color(123, 123, 123));
+        labelImage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelImage.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.lightGray, java.awt.Color.white));
+        labelImage.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         labelNome.setText("Nome:");
 
@@ -91,6 +95,7 @@ public class JFrameGerenciarUsuarios extends javax.swing.JFrame {
 
         inputNome.setEditable(false);
         inputNome.setBorder(null);
+        inputNome.setMaximumSize(new java.awt.Dimension(20, 14));
         inputNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inputNomeActionPerformed(evt);
@@ -98,6 +103,7 @@ public class JFrameGerenciarUsuarios extends javax.swing.JFrame {
         });
 
         inputIdade.setEditable(false);
+        inputIdade.setBorder(null);
         inputIdade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inputIdadeActionPerformed(evt);
@@ -105,14 +111,18 @@ public class JFrameGerenciarUsuarios extends javax.swing.JFrame {
         });
 
         inputAltura.setEditable(false);
+        inputAltura.setBorder(null);
 
         jLabel8.setText("Amigos");
 
         inputEstado.setEditable(false);
+        inputEstado.setBorder(null);
 
         inputCidade.setEditable(false);
+        inputCidade.setBorder(null);
 
         inputEndereco.setEditable(false);
+        inputEndereco.setBorder(null);
         inputEndereco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inputEnderecoActionPerformed(evt);
@@ -150,41 +160,14 @@ public class JFrameGerenciarUsuarios extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(8, 8, 8)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(labelAltura)
-                                        .addGap(15, 15, 15)
-                                        .addComponent(inputAltura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(labelIdade)
-                                        .addGap(15, 15, 15)
-                                        .addComponent(inputIdade, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(labelEstado)
-                                        .addGap(15, 15, 15)
-                                        .addComponent(inputEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(labelCidade)
-                                        .addGap(15, 15, 15)
-                                        .addComponent(inputCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(labelEndereco)
-                                        .addGap(15, 15, 15)
-                                        .addComponent(inputEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(image, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(labelImage, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(labelNome)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(inputNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
+                                .addComponent(inputNome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(editar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(novo))
@@ -198,11 +181,42 @@ public class JFrameGerenciarUsuarios extends javax.swing.JFrame {
                                 .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                                 .addComponent(excluir))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(voltar)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(voltar))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel7)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(8, 8, 8)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(labelEndereco)
+                                                .addGap(15, 15, 15)
+                                                .addComponent(inputEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addComponent(labelAltura)
+                                                    .addGap(15, 15, 15)
+                                                    .addComponent(inputAltura))
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addComponent(labelIdade)
+                                                    .addGap(15, 15, 15)
+                                                    .addComponent(inputIdade, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                    .addComponent(labelEstado)
+                                                    .addGap(15, 15, 15)
+                                                    .addComponent(inputEstado))
+                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                    .addComponent(labelCidade)
+                                                    .addGap(15, 15, 15)
+                                                    .addComponent(inputCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(18, 18, 18)
                         .addComponent(avancar)))
                 .addContainerGap())
@@ -231,14 +245,14 @@ public class JFrameGerenciarUsuarios extends javax.swing.JFrame {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(editar)
                                 .addComponent(novo))
-                            .addComponent(image, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(labelImage, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel7)
                 .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(labelIdade)
                     .addComponent(inputIdade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
+                .addGap(9, 9, 9)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(labelAltura)
                     .addComponent(inputAltura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -258,7 +272,7 @@ public class JFrameGerenciarUsuarios extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(avancar)
                     .addComponent(voltar))
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -266,6 +280,18 @@ public class JFrameGerenciarUsuarios extends javax.swing.JFrame {
 
     private void novoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_novoActionPerformed
         // TODO add your handling code here:
+        this.novoUsuario.setVisible(true);
+        this.setVisible(false);
+        
+//        this.novoUsuario = !this.novoUsuario;
+//        this.novo.setText(this.novoUsuario ? "Cancelar" : "Novo");
+//        if (this.novoUsuario) {
+//            limparComponente();
+//            habilitarCampos(this.novoUsuario);
+//        } else {
+//            iniciarComponente();
+//            habilitarCampos(this.novoUsuario);
+//        }
     }//GEN-LAST:event_novoActionPerformed
 
     private void inputNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputNomeActionPerformed
@@ -286,16 +312,45 @@ public class JFrameGerenciarUsuarios extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_avancarActionPerformed
 
+    private void limparComponente() {
+        this.inputNome.setText("");
+        this.inputIdade.setText("");
+        this.inputAltura.setText("");
+        this.inputEstado.setText("");
+        this.inputCidade.setText("");
+        this.inputEndereco.setText("");
+        this.labelImage.setIcon(lidarComImagem(new ImageIcon("default.jpg")));
+    }
+
+    private void habilitarCampos(boolean habilitar) {
+        this.inputNome.setEditable(habilitar);
+        this.inputNome.setEditable(habilitar);
+        this.inputIdade.setEditable(habilitar);
+        this.inputAltura.setEditable(habilitar);
+        this.inputEstado.setEditable(habilitar);
+        this.inputCidade.setEditable(habilitar);
+        this.inputEndereco.setEditable(habilitar);
+//        this.labelImage.setIcon(lidarComImagem(new ImageIcon("default.jpg")));
+    }
+
     private void iniciarComponente() {
         if (!cadastro.isEmpty()) {
-            System.out.println("Boaa " + cadastro.get(0).getCidade());
-            this.inputNome.setText(cadastro.get(0).getCidade());
-            this.inputIdade.setText(cadastro.get(0).getIdade().toString());
-//            this.inputAltura.setText((float)  cadastro.get(0).getAltura());
-            this.inputNome.setText(cadastro.get(0).getCidade());
-            this.inputNome.setText(cadastro.get(0).getCidade());
-            this.inputNome.setText(cadastro.get(0).getCidade());
+            this.inputNome.setText(cadastro.get(this.index).getNome());
+            this.inputIdade.setText(cadastro.get(this.index).getIdade().toString());
+            this.inputAltura.setText(String.valueOf(cadastro.get(this.index).getAltura()));
+            this.inputEstado.setText(cadastro.get(this.index).getEstado().nome);
+            this.inputCidade.setText(cadastro.get(this.index).getCidade());
+            this.inputEndereco.setText(cadastro.get(this.index).getEndereco());
+            this.labelImage.setIcon(lidarComImagem(cadastro.get(this.index).getFoto()));
         }
+    }
+
+    private ImageIcon lidarComImagem(ImageIcon imagem) {
+        ImageIcon imageIcon = imagem;
+        Image image = imageIcon.getImage();
+        Image newimg = image.getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH);
+
+        return new ImageIcon(newimg);
     }
 
     /**
@@ -337,7 +392,6 @@ public class JFrameGerenciarUsuarios extends javax.swing.JFrame {
     private javax.swing.JButton avancar;
     private javax.swing.JButton editar;
     private javax.swing.JButton excluir;
-    private javax.swing.JLabel image;
     private javax.swing.JTextField inputAltura;
     private javax.swing.JTextField inputCidade;
     private javax.swing.JTextField inputEndereco;
@@ -355,8 +409,13 @@ public class JFrameGerenciarUsuarios extends javax.swing.JFrame {
     private javax.swing.JLabel labelEndereco;
     private javax.swing.JLabel labelEstado;
     private javax.swing.JLabel labelIdade;
+    private javax.swing.JLabel labelImage;
     private javax.swing.JLabel labelNome;
     private javax.swing.JButton novo;
     private javax.swing.JButton voltar;
     // End of variables declaration//GEN-END:variables
+
+    void setGerenciarUsuario(JFrameNovoUsuario novoUsuario) {
+        this.novoUsuario = novoUsuario;
+    }
 }
