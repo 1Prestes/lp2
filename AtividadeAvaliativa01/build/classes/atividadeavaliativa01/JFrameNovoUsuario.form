@@ -34,33 +34,37 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="labelIdade" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                                      <Component id="inputIdade" max="32767" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="labelNome" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="labelIdade" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="inputNome" max="32767" attributes="0"/>
+                                          <Component id="inputIdade" max="32767" attributes="0"/>
+                                      </Group>
                                   </Group>
                                   <Group type="102" attributes="0">
-                                      <Component id="labelEndereco" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                                      <Component id="inputEndereco" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="labelAltura" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="labelEstado" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="labelCidade" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="labelEstado" min="-2" max="-2" attributes="0"/>
+                                          <Component id="labelAltura" min="-2" max="-2" attributes="0"/>
+                                          <Component id="labelEndereco" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="inputCidade" max="32767" attributes="0"/>
-                                          <Component id="inputEstado" max="32767" attributes="0"/>
                                           <Component id="inputAltura" max="32767" attributes="0"/>
+                                          <Component id="inputEndereco" max="32767" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="inputUf" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="labelCidade" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="inputCidade" min="-2" pref="234" max="-2" attributes="0"/>
+                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                          </Group>
                                       </Group>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="labelNome" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="inputNome" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -70,8 +74,17 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="labelImage" min="-2" pref="114" max="-2" attributes="0"/>
-                      <EmptySpace pref="464" max="32767" attributes="0"/>
-                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="0" pref="446" max="32767" attributes="0"/>
+                              <Component id="limparFormulario" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="escolherImagem" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -84,39 +97,37 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="labelImage" min="-2" pref="114" max="-2" attributes="0"/>
-                  <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                  <Component id="limparFormulario" min="-2" max="-2" attributes="0"/>
+                  <Component id="escolherImagem" alignment="1" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="labelNome" alignment="1" min="-2" max="-2" attributes="0"/>
                   <Component id="inputNome" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="labelNome" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Component id="labelIdade" min="-2" max="-2" attributes="0"/>
                   <Component id="inputIdade" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="labelAltura" min="-2" max="-2" attributes="0"/>
-                  <Component id="inputAltura" min="-2" max="-2" attributes="0"/>
-              </Group>
               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="labelEstado" min="-2" max="-2" attributes="0"/>
-                  <Component id="inputEstado" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="inputAltura" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="labelAltura" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="labelEstado" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="inputUf" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="labelCidade" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="inputCidade" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="labelEndereco" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="inputEndereco" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="labelEndereco" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="avancar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="voltar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -145,6 +156,9 @@
         </Property>
         <Property name="horizontalTextPosition" type="int" value="0"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="labelImageMouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="labelNome">
       <Properties>
@@ -179,7 +193,9 @@
     <Component class="javax.swing.JTextField" name="inputNome">
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="null"/>
+          <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+            <EtchetBorder/>
+          </Border>
         </Property>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[20, 14]"/>
@@ -192,38 +208,42 @@
     <Component class="javax.swing.JTextField" name="inputIdade">
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="null"/>
+          <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+            <EtchetBorder/>
+          </Border>
         </Property>
       </Properties>
       <Events>
+        <EventHandler event="caretUpdate" listener="javax.swing.event.CaretListener" parameters="javax.swing.event.CaretEvent" handler="inputIdadeCaretUpdate"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="inputIdadeActionPerformed"/>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="inputIdadeKeyReleased"/>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="inputIdadeKeyTyped"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="inputAltura">
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="null"/>
-        </Property>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="inputEstado">
-      <Properties>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="null"/>
+          <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+            <EtchetBorder/>
+          </Border>
         </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="inputCidade">
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="null"/>
+          <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+            <EtchetBorder/>
+          </Border>
         </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="inputEndereco">
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="null"/>
+          <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+            <EtchetBorder/>
+          </Border>
         </Property>
       </Properties>
       <Events>
@@ -242,11 +262,67 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Cancelar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="voltarActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="limparFormulario">
       <Properties>
         <Property name="text" type="java.lang.String" value="Limpar formulario"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="limparFormularioActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="escolherImagem">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Escolher foto"/>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="escolherImagemMouseClicked"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="escolherImagemActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="inputUf">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="27">
+            <StringItem index="0" value="Acre - AC"/>
+            <StringItem index="1" value="Alagoas - AL"/>
+            <StringItem index="2" value="Amap&#xe1; - AP"/>
+            <StringItem index="3" value="Amazonas - AM"/>
+            <StringItem index="4" value="Bahia - BA"/>
+            <StringItem index="5" value="Cear&#xe1; - CE"/>
+            <StringItem index="6" value="Distrito Federal - DF"/>
+            <StringItem index="7" value="Espirito Santo - ES"/>
+            <StringItem index="8" value="Goi&#xe1;s - GO"/>
+            <StringItem index="9" value="Maranh&#xe3;o - MA"/>
+            <StringItem index="10" value="Mato Grosso do Sul - MS"/>
+            <StringItem index="11" value="Mato Grosso - MT"/>
+            <StringItem index="12" value="Minas Gerais - MG"/>
+            <StringItem index="13" value="Par&#xe1; - PA"/>
+            <StringItem index="14" value="Para&#xed;ba - PB"/>
+            <StringItem index="15" value="Paran&#xe1; - PR"/>
+            <StringItem index="16" value="Pernambuco - PE"/>
+            <StringItem index="17" value="Piau&#xed; - PI"/>
+            <StringItem index="18" value="Rio de Janeiro - RJ"/>
+            <StringItem index="19" value="Rio Grande do Norte - RN"/>
+            <StringItem index="20" value="Rio Grande do Sul - RS"/>
+            <StringItem index="21" value="Rond&#xf4;nia - RO"/>
+            <StringItem index="22" value="Roraima - RR"/>
+            <StringItem index="23" value="Santa Catarina - SC"/>
+            <StringItem index="24" value="S&#xe3;o Paulo - SP"/>
+            <StringItem index="25" value="Sergipe - SE"/>
+            <StringItem index="26" value="Tocantins - TO"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="inputUfActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

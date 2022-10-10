@@ -4,9 +4,14 @@
  */
 package atividadeavaliativa01;
 
+import static atividadeavaliativa01.JFrameNovoUsuario.db;
 import java.awt.Image;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,13 +24,14 @@ public class JFrameGerenciarUsuarios extends javax.swing.JFrame {
      */
     public static ArrayList<Cadastro> cadastro = new ArrayList<Cadastro>();
     private int index = 0;
-//    private boolean novoUsuario = false;
+    
     private JFrameNovoUsuario novoUsuario;
+    private JFrameEditarUsuario editarUsuario = new JFrameEditarUsuario(cadastro, index);
 
     public JFrameGerenciarUsuarios(ArrayList<Cadastro> cadastro) {
         this.cadastro = cadastro;
         initComponents();
-        this.iniciarComponente();
+        this.exibirUsuario();
     }
 
     /**
@@ -50,14 +56,9 @@ public class JFrameGerenciarUsuarios extends javax.swing.JFrame {
         inputNome = new javax.swing.JTextField();
         inputIdade = new javax.swing.JTextField();
         inputAltura = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
         inputEstado = new javax.swing.JTextField();
         inputCidade = new javax.swing.JTextField();
         inputEndereco = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
         excluir = new javax.swing.JButton();
         avancar = new javax.swing.JButton();
         voltar = new javax.swing.JButton();
@@ -92,6 +93,11 @@ public class JFrameGerenciarUsuarios extends javax.swing.JFrame {
         });
 
         editar.setText("Editar");
+        editar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editarActionPerformed(evt);
+            }
+        });
 
         inputNome.setEditable(false);
         inputNome.setBorder(null);
@@ -112,8 +118,11 @@ public class JFrameGerenciarUsuarios extends javax.swing.JFrame {
 
         inputAltura.setEditable(false);
         inputAltura.setBorder(null);
-
-        jLabel8.setText("Amigos");
+        inputAltura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputAlturaActionPerformed(evt);
+            }
+        });
 
         inputEstado.setEditable(false);
         inputEstado.setBorder(null);
@@ -129,19 +138,12 @@ public class JFrameGerenciarUsuarios extends javax.swing.JFrame {
             }
         });
 
-        jLabel9.setText("Image");
-        jLabel9.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, java.awt.Color.lightGray, java.awt.Color.lightGray));
-
-        jLabel10.setText("Image");
-        jLabel10.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, java.awt.Color.lightGray, java.awt.Color.lightGray));
-
-        jLabel11.setText("Image");
-        jLabel11.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, java.awt.Color.lightGray, java.awt.Color.lightGray));
-
-        jLabel12.setText("Image");
-        jLabel12.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, java.awt.Color.lightGray, java.awt.Color.lightGray));
-
         excluir.setText("Excluir");
+        excluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                excluirActionPerformed(evt);
+            }
+        });
 
         avancar.setText("Avançar");
         avancar.addActionListener(new java.awt.event.ActionListener() {
@@ -151,6 +153,11 @@ public class JFrameGerenciarUsuarios extends javax.swing.JFrame {
         });
 
         voltar.setText("Voltar");
+        voltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -172,16 +179,7 @@ public class JFrameGerenciarUsuarios extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(novo))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                                .addGap(421, 421, 421)
                                 .addComponent(excluir))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -230,15 +228,8 @@ public class JFrameGerenciarUsuarios extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(labelNome)
                             .addComponent(inputNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(35, 35, 35)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel8)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(excluir))))
+                        .addGap(36, 36, 36)
+                        .addComponent(excluir))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(25, 25, 25)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -272,7 +263,7 @@ public class JFrameGerenciarUsuarios extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(avancar)
                     .addComponent(voltar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         pack();
@@ -282,7 +273,7 @@ public class JFrameGerenciarUsuarios extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.novoUsuario.setVisible(true);
         this.setVisible(false);
-        
+
 //        this.novoUsuario = !this.novoUsuario;
 //        this.novo.setText(this.novoUsuario ? "Cancelar" : "Novo");
 //        if (this.novoUsuario) {
@@ -310,16 +301,75 @@ public class JFrameGerenciarUsuarios extends javax.swing.JFrame {
 
     private void avancarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_avancarActionPerformed
         // TODO add your handling code here:
+        if ((this.index + 1) < this.cadastro.size()) {
+            this.index++;
+        } else {
+            this.index = 0;
+        }
+
+        this.exibirUsuario();
     }//GEN-LAST:event_avancarActionPerformed
 
-    private void limparComponente() {
-        this.inputNome.setText("");
-        this.inputIdade.setText("");
-        this.inputAltura.setText("");
-        this.inputEstado.setText("");
-        this.inputCidade.setText("");
-        this.inputEndereco.setText("");
-        this.labelImage.setIcon(lidarComImagem(new ImageIcon("default.jpg")));
+    private void voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarActionPerformed
+        // TODO add your handling code here:
+        if ((this.index + 1) > 1) {
+            this.index--;
+        } else {
+            this.index = this.cadastro.size() - 1;
+        }
+
+        this.exibirUsuario();
+    }//GEN-LAST:event_voltarActionPerformed
+
+    private void excluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirActionPerformed
+        // TODO add your handling code here:
+        int resposta = JOptionPane.showConfirmDialog(null, "Confirma a exclusão de \n" + this.cadastro.get(index).getNome(), "Exclusão de Registro", JOptionPane.YES_NO_OPTION);
+
+        if (resposta == 0) {
+            this.cadastro.remove(index);
+//            changeFormItems();
+            this.voltarActionPerformed(evt);
+        }
+        try {
+            escrever_arquivo();
+        } catch (IOException e) {
+        }
+    }//GEN-LAST:event_excluirActionPerformed
+
+    private void editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarActionPerformed
+        // TODO add your handling code here:
+//        JFrameEditarUsuario editarUsuarios = new JFrameEditarUsuario(cadastro, index);
+//        this.editarUsuario.db = cadastro;
+//        this.editarUsuario.index = 0;
+//        System.out.println("testeee " + this.editarUsuario.db.size());
+        this.editarUsuario.setDb(cadastro);
+        this.editarUsuario.setIndex(index);
+        this.setEditarUsuario(new JFrameEditarUsuario(cadastro, index));
+
+//        editarUsuario.setGerenciarUsuarios(this);
+        editarUsuario.setGerenciarUsuarios(this);
+
+        editarUsuario.setVisible(true);
+        this.setVisible(false);
+
+    }//GEN-LAST:event_editarActionPerformed
+
+    private void inputAlturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputAlturaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputAlturaActionPerformed
+
+    public void escrever_arquivo() throws IOException {
+        try {
+            FileOutputStream writeData = new FileOutputStream("bd.txt");
+
+            ObjectOutputStream writeStream = new ObjectOutputStream(writeData);
+
+            writeStream.writeObject(db);
+            writeStream.flush();
+            writeStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void habilitarCampos(boolean habilitar) {
@@ -333,7 +383,7 @@ public class JFrameGerenciarUsuarios extends javax.swing.JFrame {
 //        this.labelImage.setIcon(lidarComImagem(new ImageIcon("default.jpg")));
     }
 
-    private void iniciarComponente() {
+    private void exibirUsuario() {
         if (!cadastro.isEmpty()) {
             this.inputNome.setText(cadastro.get(this.index).getNome());
             this.inputIdade.setText(cadastro.get(this.index).getIdade().toString());
@@ -398,12 +448,7 @@ public class JFrameGerenciarUsuarios extends javax.swing.JFrame {
     private javax.swing.JTextField inputEstado;
     private javax.swing.JTextField inputIdade;
     private javax.swing.JTextField inputNome;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel labelAltura;
     private javax.swing.JLabel labelCidade;
     private javax.swing.JLabel labelEndereco;
@@ -415,7 +460,14 @@ public class JFrameGerenciarUsuarios extends javax.swing.JFrame {
     private javax.swing.JButton voltar;
     // End of variables declaration//GEN-END:variables
 
-    void setGerenciarUsuario(JFrameNovoUsuario novoUsuario) {
+//    void setGerenciarUsuario(JFrameNovoUsuario novoUsuario) {
+//        this.novoUsuario = novoUsuario;
+//    }
+    void setNovoUsuario(JFrameNovoUsuario novoUsuario) {
         this.novoUsuario = novoUsuario;
+    }
+
+    private void setEditarUsuario(JFrameEditarUsuario editarUsuario) {
+        this.editarUsuario = editarUsuario;
     }
 }

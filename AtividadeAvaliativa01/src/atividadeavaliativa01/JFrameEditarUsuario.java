@@ -13,6 +13,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -24,30 +25,22 @@ import javax.swing.JOptionPane;
  *
  * @author dijan
  */
-public class JFrameNovoUsuario extends javax.swing.JFrame {
+public class JFrameEditarUsuario extends javax.swing.JFrame {
 
     /**
      * Creates new form JFrameGerenciarUsuarios
      */
     public static ArrayList<Cadastro> db = new ArrayList<>();
     private boolean novoUsuario = false;
+    public static int index = 0;
     JFrameGerenciarUsuarios gerenciarUsuarios;
 
-//    public JFrameNovoUsuario() {
-//        initComponents();
-//        this.iniciarComponente();
-//    }
-    public JFrameNovoUsuario(ArrayList<Cadastro> cadastro) {
+    public JFrameEditarUsuario(ArrayList<Cadastro> cadastro, int index) {
         this.db = cadastro;
+        this.index = index;
         initComponents();
         this.iniciarComponente();
     }
-
-//    public JFrameNovoUsuario(ArrayList<Cadastro> cadastro) {
-//        this.db = cadastro;
-//        initComponents();
-//        this.iniciarComponente();
-//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -139,7 +132,7 @@ public class JFrameNovoUsuario extends javax.swing.JFrame {
             }
         });
 
-        avancar.setText("Criar");
+        avancar.setText("Salvar");
         avancar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 avancarActionPerformed(evt);
@@ -161,7 +154,6 @@ public class JFrameNovoUsuario extends javax.swing.JFrame {
         });
 
         escolherImagem.setText("Escolher foto");
-        escolherImagem.setActionCommand("Escolher foto");
         escolherImagem.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 escolherImagemMouseClicked(evt);
@@ -292,6 +284,7 @@ public class JFrameNovoUsuario extends javax.swing.JFrame {
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         Date data;
         try {
+//            data = formato.parse("23/11/1995");
             data = formato.parse(this.inputIdade.getText());
             String estadoSelecionado = this.inputUf.getSelectedItem().toString();
 
@@ -310,10 +303,10 @@ public class JFrameNovoUsuario extends javax.swing.JFrame {
                     355,
                     (ImageIcon) this.labelImage.getIcon()
             );
-            System.out.println("novo " + this.db.size());
-            this.db.add(cd);
+
+            this.db.set(index, cd);
         } catch (ParseException ex) {
-            Logger.getLogger(JFrameNovoUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(JFrameEditarUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
             this.escrever_arquivo();
@@ -321,7 +314,7 @@ public class JFrameNovoUsuario extends javax.swing.JFrame {
             this.setVisible(false);
             this.gerenciarUsuarios.setVisible(true);
         } catch (IOException ex) {
-            Logger.getLogger(JFrameNovoUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(JFrameEditarUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         this.limparComponente();
@@ -434,7 +427,25 @@ public class JFrameNovoUsuario extends javax.swing.JFrame {
     }
 
     private void iniciarComponente() {
+        if (!db.isEmpty()) {
+            this.inputUf.setSelectedItem(db.get(this.index).getEstado().nome + " - " + db.get(this.index).getEstado().sigla);
+            this.inputNome.setText(db.get(this.index).getNome());
+            this.inputIdade.setText(db.get(this.index).getIdade().toString());
+            this.inputAltura.setText(String.valueOf(db.get(this.index).getAltura()));
+            this.inputCidade.setText(db.get(this.index).getCidade());
+            this.inputEndereco.setText(db.get(this.index).getEndereco());
+            this.labelImage.setIcon(lidarComImagem(db.get(this.index).getFoto()));
+        }
+
         this.labelImage.setIcon(lidarComImagem(new ImageIcon("default.jpg")));
+    }
+
+    public static void setDb(ArrayList<Cadastro> db) {
+        JFrameEditarUsuario.db = db;
+    }
+
+    public static void setIndex(int index) {
+        JFrameEditarUsuario.index = index;
     }
 
     private ImageIcon lidarComImagem(ImageIcon imagem) {
@@ -462,19 +473,19 @@ public class JFrameNovoUsuario extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JFrameNovoUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFrameEditarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JFrameNovoUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFrameEditarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JFrameNovoUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFrameEditarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JFrameNovoUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFrameEditarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFrameNovoUsuario(db).setVisible(true);
+                new JFrameEditarUsuario(db, index).setVisible(true);
 
             }
         });
